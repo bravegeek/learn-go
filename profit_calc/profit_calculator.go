@@ -9,18 +9,18 @@ func main() {
 	var revenue, expenses, taxRate float64
 	// var earnings_before_tax, earnings_after_tax, ratio float64
 
-	fmt.Print("Revenue: ")
-	fmt.Scan(&revenue)
+	// fmt.Print("Revenue: ")
+	// fmt.Scan(&revenue)
+	revenue = getUserInput("Revenue")
 
-	fmt.Print("Expenses: ")
-	fmt.Scan(&expenses)
+	expenses = getUserInput("Expenses")
 
-	fmt.Print("Tax Rate: ")
-	fmt.Scan(&taxRate)
+	taxRate = getUserInput("Tax Rate")
 
-	ebt := revenue - expenses
-	profit := ebt * (1 - taxRate/100)
-	ratio := ebt / profit
+	// ebt := revenue - expenses
+	// profit := ebt * (1 - taxRate/100)
+	// ratio := ebt / profit
+	ebt, profit, ratio := calculateProfit(revenue, expenses, taxRate)
 
 	// fmt.Print("EBT: ")
 	fmt.Println("EBT: ", ebt)
@@ -28,4 +28,18 @@ func main() {
 	fmt.Println("Profit: ", profit)
 	// fmt.Print("Ratio: ")
 	fmt.Println("Ratio: ", ratio)
+}
+
+func calculateProfit(revenue, expenses, taxRate float64) (ebt, profit, ratio float64) {
+	ebt = revenue - expenses
+	profit = ebt * (1 - taxRate/100)
+	ratio = ebt / profit
+
+	return ebt, profit, ratio
+}
+
+func getUserInput(message string) (userInput float64) {
+	fmt.Printf("%v: ", message)
+	fmt.Scan(&userInput)
+	return userInput
 }
