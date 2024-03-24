@@ -6,42 +6,39 @@ func main() {
 	accountBalance := 1000.00
 
 	fmt.Println("Welcome to Go Bank!")
-
 	for {
-		menuChoice := getMenuChoice()
-
-		if menuChoice == 1 {
+		switch getMenuChoice() {
+		case 1:
 			fmt.Println("Your balance is", accountBalance)
-		} else if menuChoice == 2 {
+		case 2:
 			depositAmt := getUserInput("Deposit amount: ")
 
 			if depositAmt <= 0 {
 				fmt.Println("Invalid amount. Must be greater than 0.")
-				return
+				continue
 			}
-
 			accountBalance += depositAmt
 			fmt.Println("Your balance is now", accountBalance)
-		} else if menuChoice == 3 {
+		case 3:
 			withdrawalAmt := getUserInput("Withdrawal amount: ")
 
 			if withdrawalAmt <= 0 {
 				fmt.Println("Invalid amount. Must be greater than 0.")
-				return
+				continue
 			}
 			if withdrawalAmt > accountBalance {
 				fmt.Println("Invalid amount. You can't withdraw more than you have.")
-				return
+				continue
 			}
 
 			accountBalance -= withdrawalAmt
 			fmt.Println("Your balance is now", accountBalance)
-		} else {
-			println("Goodbye!")
-			break
+		default:
+			fmt.Println("Goodbye!")
+			fmt.Println("Thank you for choosing Go bank!")
+			return
 		}
 	}
-	fmt.Println("Thank you for choosing Go bank!")
 }
 
 func getMenuChoice() (menuChoice int) {
