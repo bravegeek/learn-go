@@ -5,8 +5,8 @@ import "fmt"
 func main() {
 	age := 32
 
-	var agePointer *int
-	agePointer = &age
+	var agePointer *int // this is a pointer
+	agePointer = &age   // this is getting the pointer to the age variable
 
 	fmt.Println("Age:", *agePointer)
 
