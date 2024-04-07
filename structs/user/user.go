@@ -14,9 +14,9 @@ type User struct {
 }
 
 type Admin struct {
-	email     string
-	password  string
-	AdminUser User
+	email    string
+	password string
+	User     // anonymous embedding
 }
 
 func (u User) OutputUserDetails() {
@@ -45,7 +45,7 @@ func NewAdmin(email, password string) Admin {
 	return Admin{
 		email:    email,
 		password: password,
-		AdminUser: User{
+		User: User{
 			firstName: "ADMIN",
 			lastName:  "ADMIN",
 			birthDate: "---",
