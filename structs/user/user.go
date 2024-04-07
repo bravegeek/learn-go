@@ -23,6 +23,8 @@ func (u User) OutputUserDetails() {
 	fmt.Println(u.firstName, u.lastName, u.birthDate)
 }
 
+// mutation function needs a pointer to the struct
+// otherwise it receives a copy
 func (u *User) ClearUserName() {
 	u.firstName = ""
 	u.lastName = ""
@@ -33,6 +35,7 @@ func New(firstName, lastName, birthDate string) (*User, error) {
 		return nil, errors.New("missing values")
 	}
 
+	// returns a pointer to the user created
 	return &User{
 		firstName: firstName,
 		lastName:  lastName,
