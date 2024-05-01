@@ -19,15 +19,6 @@ type outputable interface {
 	Display()
 }
 
-// type displayer interface {
-// 	Display()
-// }
-
-// type outputable interface {
-// 	Save() error
-// 	Display()
-// }
-
 func main() {
 
 	// get data
@@ -42,10 +33,7 @@ func main() {
 		return
 	}
 
-	// userTodo.Display()
-	// err = saveData(userTodo)
-
-	outputData(userTodo)
+	err = outputData(userTodo)
 
 	if err != nil {
 		return
@@ -59,25 +47,16 @@ func main() {
 		return
 	}
 
-	userNote.Display()
-	err = saveData(userNote)
+	err = outputData(userNote)
 
 	if err != nil {
 		return
 	}
-
-	// err = userNote.Save()
-	// if err != nil {
-	// 	fmt.Println("Saving the note failed.")
-	// 	return
-	// }
-
-	// fmt.Println("Saving the note succeeded")
 }
 
-func outputData(data outputable) {
+func outputData(data outputable) error {
 	data.Display()
-	saveData(data)
+	return saveData(data)
 }
 
 func saveData(data saver) error {
