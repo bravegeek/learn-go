@@ -42,8 +42,10 @@ func main() {
 		return
 	}
 
-	userTodo.Display()
-	err = saveData(userTodo)
+	// userTodo.Display()
+	// err = saveData(userTodo)
+
+	outputData(userTodo)
 
 	if err != nil {
 		return
@@ -74,8 +76,10 @@ func main() {
 }
 
 func outputData(data outputable) {
-
+	data.Display()
+	saveData(data)
 }
+
 func saveData(data saver) error {
 	err := data.Save()
 
