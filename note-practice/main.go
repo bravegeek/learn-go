@@ -21,6 +21,9 @@ type outputable interface {
 
 func main() {
 
+	printSomething(23)
+	printSomething("I printed something")
+
 	// get data
 	title, content := getNoteData()
 	todoText := getUserInput("Todo text:")
@@ -39,6 +42,8 @@ func main() {
 		return
 	}
 
+	printSomething(userTodo) // won't do anything
+
 	// create, display, save Note
 	userNote, err := note.New(title, content)
 
@@ -52,6 +57,23 @@ func main() {
 	if err != nil {
 		return
 	}
+}
+
+func printSomething(value interface{}) {
+	typedVal, ok := value.(int)
+
+	if ok {
+		fmt.Println("Integer: ", typedVal)
+	}
+	// switch value.(type) {
+	// case int:
+	// 	fmt.Println("Integer: ", value)
+	// case float64:
+	// 	fmt.Println("Float: ", value)
+	// case string:
+	// 	fmt.Println("String: ", value)
+	// 	// default:
+	// }
 }
 
 func outputData(data outputable) error {
