@@ -2,12 +2,6 @@ package main
 
 import "fmt"
 
-// type Product struct {
-// 	title string
-// 	id    string
-// 	price float64
-// }
-
 func main() {
 
 	productNames := [4]string{"A book"}
@@ -23,5 +17,21 @@ func main() {
 	fmt.Println(prices[0])
 
 	featuredPrices := prices[1:3] //1st number is inclusive, 2nd is exclusive
+
+	highlightedPrices := featuredPrices[1:] // slice of a slice
+
 	fmt.Println(featuredPrices)
+	fmt.Println(highlightedPrices)
+
+	//slices are a window (pointer) into an array
+	featuredPrices[0] = 199.99 //modify a value from the slice
+	fmt.Println(prices)        // orig array
+
+	// startingSlice := prices[:3]
+	// fmt.Println(startingSlice)
+
+	// endingSlice := prices[1:]
+	// fmt.Println(endingSlice)
+
+	fmt.Println(len(featuredPrices), cap(featuredPrices)) // length and capacity
 }
