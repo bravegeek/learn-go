@@ -1,9 +1,10 @@
-package main
+package maps
 
 import "fmt"
 
 func main() {
 	// websites:=[]string{"https://google.com","https://aws.com"}
+
 	websites := map[string]string{ //like a dictionary
 		"Google":              "https://google.com",
 		"Amazon Web Services": "https://aws.com",
