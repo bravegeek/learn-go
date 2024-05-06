@@ -23,8 +23,9 @@ func main() {
 	fmt.Println(hobbies3)
 
 	fmt.Println(4)
-	hobbies4 := hobbies[1:]
-	fmt.Println(hobbies4)
+	// hobbies3 = hobbies3[1:] // this will only return "backpacking" because of the existing slice
+	hobbies3 = hobbies3[1:3] // returns "backpacking" and "scuba-diving", uses the backing array to get the rest
+	fmt.Println(hobbies3)
 
 	fmt.Println(5)
 	goals := []string{"learn-go", "finish-course"}
@@ -36,8 +37,11 @@ func main() {
 	fmt.Println(goals)
 
 	fmt.Println(7)
-	products := []Product{{title: "N5105", id: "1", price: 125.32}, {title: "Jonsbo N1", id: "2", price: 139.99}}
-	products = append(products, Product{title: "SFX Power Supply", id: "32", price: 99.99})
+	products := []Product{
+		{title: "N5105", id: "1", price: 125.32},
+		{title: "Jonsbo N1", id: "2", price: 139.99},
+	}
+	products = append(products, Product{"SFX Power Supply", "32", 99.99})
 
 	fmt.Println(products)
 }
