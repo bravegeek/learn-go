@@ -27,6 +27,15 @@ func main() {
 	courseRatings["react"] = 4.8
 	courseRatings["angular"] = 4.7
 
-	// fmt.Println(courseRatings)
-	courseRatings.output()
+	courseRatings.output() // print
+
+	for index, value := range userNames {
+		fmt.Println("index:", index)
+		fmt.Println("value:", value)
+	}
+
+	for key, val := range courseRatings {
+		fmt.Println("key:", key)
+		fmt.Println("value:", val)
+	}
 }
