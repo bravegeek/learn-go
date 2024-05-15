@@ -1,0 +1,98 @@
+Install Ollama
+>
+curl -fsSL https://ollama.com/install.sh | sh
+
+download a model
+https://ollama.com/library/llama3
+>
+ollama pull llama3
+
+run a model
+>
+ollama run llama3
+
+webui
+>
+docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+
+
+monitor gpu
+>
+sudo apt install radeontop
+sudo radeontop
+
+download another model
+ollama pull codegemma
+
+multimodal model
+ollama pull llava
+ 
+ -choose @llava model when asking about pictures
+
+
+Continue - CodeLlama
+VS Code plugin 
+https://www.continue.dev/
+Open-source autopilot - build your own AI software development system
+
+Stable Diffusion Install
+Prereqs
+Pyenv
+
+#Install Pyenv prereqs
+sudo apt install -y make build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
+libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev git
+
+#Install Pyenv
+
+curl https://pyenv.run | bash
+
+#Install Python 3.10
+
+pyenv install 3.10
+
+#Make it global
+
+pyenv global 3.10
+
+ 
+Install Stable Diffusion
+
+wget -q https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh
+
+# Make it executable
+
+chmod +x webui.sh
+
+#Run it
+
+./webui.sh --listen --api
+
+
+stable diffusion on AMD Radeon
+https://www.youtube.com/watch?v=d_CgaHyA_n4&t=79s
+
+install ROCm kernel drivers
+https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/native-install/ubuntu.html
+
+ROCm post install
+https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/native-install/post-install.html
+
+??? is this step necessary ???
+run ROCm in docker
+https://github.com/ROCm/ROCm-docker/blob/master/quick-start.md
+???
+
+rocm/pytorch
+https://hub.docker.com/r/rocm/pytorch
+add alias to .zshrc
+drun rocm/pytorch​
+
+Installing PyTorch for ROCm
+https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/pytorch-install.html
+
+pytorch installation info - 
+>
+pip show torch
+
