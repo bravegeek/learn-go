@@ -96,3 +96,26 @@ pytorch installation info -
 >
 pip show torch
 
+-- docker pytorch setup, didn't work for me
+https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Install-and-Run-on-AMD-GPUs#running-inside-docker
+
+-- trying this
+https://www.reddit.com/r/StableDiffusion/comments/zu9w40/novices_guide_to_automatic1111_on_linux_with_amd/
+
+pytorch installation
+>
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0
+
+Each time you open a new terminal it will need to be re-activated if you want to use PyTorch or any other PIP packages.
+>
+. venv/bin/activate
+
+6700xt instructions
+https://phazertech.com/tutorials/rocm.html
+
+
+dreamshaper models
+https://civitai.com/models/4384/dreamshaper
+
+Run stable-diffusion
+./webui.sh --api
