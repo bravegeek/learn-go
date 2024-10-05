@@ -79,6 +79,9 @@ https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/native-inst
 install via AMDGPU installer
 https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/amdgpu-install.html
 
+troubleshooting
+https://github.com/ROCm/ROCm/issues/3701
+
 ROCm post install
 https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/native-install/post-install.html
 
