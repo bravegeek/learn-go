@@ -1,3 +1,5 @@
+# https://dev.to/berk/running-ollama-and-open-webui-self-hosted-4ih5
+
 services:
   openWebUI:
     image: ghcr.io/open-webui/open-webui:main
