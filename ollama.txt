@@ -1,6 +1,18 @@
 
 Docker combined Ollama and WebUI with GPU suport
-docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
+# docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
+docker run -d -p 3000:8080 --device /dev/kfd --device /dev/dri --v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
+
+### works !!!
+# ollama image to use rocm
+docker run -d --restart always --device /dev/kfd --device /dev/dri -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama:rocm
+
+# open-webui to use ollama:rocm
+docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+###
+
+# used for accessing gpu via rocm
+docker run --device /dev/kfd --device /dev/dri 
 
 
 Install Ollama
