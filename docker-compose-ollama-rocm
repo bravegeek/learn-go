@@ -12,7 +12,7 @@ services:
             OLLAMA_BASE_URLS: http://ollama:11434
 
     ollama:
-        image: ollama/ollama:rocm
+        image: ollama/ollama:rocm # ROCm image for AMD GPUs
         container_name: ollama
         hostname: ollama
         ports:
@@ -23,18 +23,9 @@ services:
             - /dev/kfd:/dev/kfd
             - /dev/dri:/dev/dri
         environment:
+            # GPU 6700XT = 10.3.0
             - 'HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION-10.3.0}'
 
 volumes:
     open-webui:
-        # driver: local
-        # driver_opts:
-        #     o: bind
-        #     type: none
-        #     device: /var/lib/docker/volumes/open-webui/_data
     ollama:
-        # driver: local
-        # driver_opts:
-        #     o: bind
-        #     type: none
-        #     device: /var/lib/docker/volumes/ollama/_data
