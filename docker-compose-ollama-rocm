@@ -1,26 +1,40 @@
 services:
-  openWebUI:
-    image: ghcr.io/open-webui/open-webui:main
-    container_name: openwebui
-    hostname: openwebui
-    ports:
-        - '8080:8080'
-    volumes:
-      - ./open-webui:/app/backend/data
-    restart: unless-stopped
-    environment:
-      OLLAMA_BASE_URLS: http://ollama:11434
+    openWebUI:
+        image: ghcr.io/open-webui/open-webui:main
+        container_name: openwebui
+        hostname: openwebui
+        ports:
+            - '8080:8080'
+        volumes:
+            - open-webui:/app/backend/data
+        restart: unless-stopped
+        environment:
+            OLLAMA_BASE_URLS: http://ollama:11434
 
-  ollama:
-    image: ollama/ollama:rocm
-    container_name: ollama
-    hostname: ollama
-    ports:
-        - '11434:11434'
-    volumes:
-      - ./ollama:/root/.ollama
-    devices:
-      - /dev/kfd:/dev/kfd
-      - /dev/dri:/dev/dri
-    environment:
-      - 'HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION-10.3.0}'
+    ollama:
+        image: ollama/ollama:rocm
+        container_name: ollama
+        hostname: ollama
+        ports:
+            - '11434:11434'
+        volumes:
+            - ollama:/root/.ollama
+        devices:
+            - /dev/kfd:/dev/kfd
+            - /dev/dri:/dev/dri
+        environment:
+            - 'HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION-10.3.0}'
+
+volumes:
+    open-webui:
+        # driver: local
+        # driver_opts:
+        #     o: bind
+        #     type: none
+        #     device: /var/lib/docker/volumes/open-webui/_data
+    ollama:
+        # driver: local
+        # driver_opts:
+        #     o: bind
+        #     type: none
+        #     device: /var/lib/docker/volumes/ollama/_data
